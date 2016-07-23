@@ -125,6 +125,7 @@ function initSidebar() {
     $('#scanned-switch').prop('checked', localStorage.showScanned === 'true');
     $('#sound-switch').prop('checked', localStorage.playSound === 'true');
 
+    /*
     var searchBox = new google.maps.places.SearchBox(document.getElementById('next-location'));
 
     searchBox.addListener('places_changed', function() {
@@ -141,6 +142,7 @@ function initSidebar() {
             marker.setPosition(loc);
         });
     });
+    */
 }
 
 var pad = function (number) { return number <= 99 ? ("0" + number).slice(-2) : number; }
