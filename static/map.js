@@ -24,11 +24,11 @@ $.getJSON("static/locales/pokemon." + document.documentElement.lang + ".json").d
 
     // setup the filter lists
     $selectExclude.select2({
-        placeholder: "Select Pokémon",
+        placeholder: "Sélectionner Pokémon",
         data: pokeList
     });
     $selectNotify.select2({
-        placeholder: "Select Pokémon",
+        placeholder: "Sélectionner  Pokémon",
         data: pokeList
     });
 
@@ -79,11 +79,11 @@ function initMap() {
           style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
           position: google.maps.ControlPosition.RIGHT_TOP,
           mapTypeIds: [
+              'style_pgo',
               google.maps.MapTypeId.ROADMAP,
               google.maps.MapTypeId.SATELLITE,
               'dark_style',
-              'style_light2',
-              'style_pgo']
+              'style_light2',]
         },
     });
 
@@ -101,7 +101,7 @@ function initMap() {
     });
 
     if (!localStorage['map_style'] || localStorage['map_style'] === 'undefined') {
-        localStorage['map_style'] = 'roadmap';
+        localStorage['map_style'] = 'style_pgo';
     }
 
     map.setMapTypeId(localStorage['map_style']);
@@ -156,16 +156,12 @@ function pokemonLabel(name, disappear_time, id, latitude, longitude) {
             <b>${name}</b>
             <span> - </span>
             <small>
-                <a href='http://www.pokemon.com/us/pokedex/${id}' target='_blank' title='View in Pokedex'>#${id}</a>
+                <a href='http://www.pokemon.com/fr/pokedex/${id}' target='_blank' title='View in Pokedex'>#${id}</a>
             </small>
         </div>
         <div>
-            Disappears at ${pad(disappear_date.getHours())}:${pad(disappear_date.getMinutes())}:${pad(disappear_date.getSeconds())}
-            <span class='label-countdown' disappears-at='${disappear_time}'>(00m00s)</span></div>
-        <div>
-            <a href='https://www.google.com/maps/dir/Current+Location/${latitude},${longitude}'
-                    target='_blank' title='View in Maps'>Get directions</a>
-        </div>`;
+            Disparait à ${pad(disappear_date.getHours())}:${pad(disappear_date.getMinutes())}:${pad(disappear_date.getSeconds())}
+            <span class='label-countdown' disappears-at='${disappear_time}'>(00m00s)</span></div>`;
     return contentstring;
 }
 
@@ -209,31 +205,23 @@ function pokestopLabel(lured, last_modified, active_pokemon_id, latitude, longit
 
         str = `
             <div>
-                <b>Lured Pokéstop</b>
+                <b>Pokéstop avec leurre</b>
             </div>
             <div>
-                Lured Pokémon: ${active_pokemon}
+                Dernier Pokémon leurré: ${active_pokemon}
                 <span> - </span>
                 <small>
-                    <a href='http://www.pokemon.com/us/pokedex/${active_pokemon_id}' target='_blank' title='View in Pokedex'>#${active_pokemon_id}</a>
+                    <a href='http://www.pokemon.com/fr/pokedex/${active_pokemon_id}' target='_blank' title='View in Pokedex'>#${active_pokemon_id}</a>
                 </small>
             </div>
             <div>
                 Lure expires at ${pad(expire_date.getHours())}:${pad(expire_date.getMinutes())}:${pad(expire_date.getSeconds())}
                 <span class='label-countdown' disappears-at='${expire_time}'>(00m00s)</span></div>
-            <div>
-            <div>
-                <a href='https://www.google.com/maps/dir/Current+Location/${latitude},${longitude}'
-                        target='_blank' title='View in Maps'>Get directions</a>
-            </div>`;
+            <div>`;
     } else {
         str = `
             <div>
                 <b>Pokéstop</b>
-            </div>
-            <div>
-                <a href='https://www.google.com/maps/dir/Current+Location/${latitude},${longitude}'
-                        target='_blank' title='View in Maps'>Get directions</a>
             </div>`;
     }
 
