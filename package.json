@@ -19,7 +19,8 @@
     "grunt-sass": "latest",
     "grunt-unused": "latest",
     "grunt-usemin": "latest",
-    "jshint-stylish": "latest"
+    "jshint-stylish": "latest",
+    "markerwithlabel": "^2.0.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
