@@ -106,6 +106,7 @@ function initMap() {
 
     map.setMapTypeId(localStorage['map_style']);
 
+    /*
     marker = new google.maps.Marker({
         position: {
             lat: center_lat,
@@ -114,6 +115,7 @@ function initMap() {
         map: map,
         animation: google.maps.Animation.DROP
     });
+    */
 
     initSidebar();
 };
