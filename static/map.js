@@ -72,7 +72,7 @@ function initMap() {
             lng: center_lng
         },
         zoom: 16,
-        fullscreenControl: true,
+        fullscreenControl: false,
         streetViewControl: false,
 		mapTypeControl: true,
 		mapTypeControlOptions: {

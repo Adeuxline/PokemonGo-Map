@@ -2,3 +2,6 @@
   #header > h1 > i {
     color: greenyellow;
 }
+.responsiveads { width: 75%; height: 100px; }
+@media(min-width: 500px) { .responsiveads { width: 468px; height: 60px; } }
+@media(min-width: 800px) { .responsiveads { width: 728px; height: 90px; } }
