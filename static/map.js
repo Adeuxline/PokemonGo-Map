@@ -246,11 +246,17 @@ map_scanned = {} // Pokestops
 var gym_types = ["Uncontested", "Mystic", "Valor", "Instinct"];
 var audio = new Audio('https://github.com/AHAAAAAAA/PokemonGo-Map/raw/develop/static/sounds/ding.mp3');
 
+// this could use a refactor...
+function calculateSpritePoints(num) {
+    var y = Math.floor((num - 1) / 12);
+    var x = (num - 1) % 12;
+
+    return new google.maps.Point(30 * x, 30 * y);
+}
+
 function setupPokemonMarker(item) {
-<<<<<<< HEAD
-=======
     var icon = new google.maps.MarkerImage("static/icons-sprite@2x.png", new google.maps.Size(30, 30), calculateSpritePoints(parseInt(item.pokemon_id)), new google.maps.Point(15, 15), new google.maps.Size(360, 390));
->>>>>>> 5dc0914... added retina-capable pokemon icons
+
     var marker = new google.maps.Marker({
         position: {
             lat: item.latitude,
