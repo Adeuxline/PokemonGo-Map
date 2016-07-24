@@ -84,6 +84,20 @@ function initMap() {
         },
     });
 
+    var ad = '<ins class="adsbygoogle" \
+              style="display:inline-block;width:300px;height:100px;z-index: 9999;" \
+              data-ad-client="ca-pub-2991652269444733" \
+              data-ad-slot="3149333806"></ins>';
+
+    var adNode = document.createElement('div');
+    adNode.innerHTML = ad;
+
+    map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(adNode);
+
+    google.maps.event.addListenerOnce(map, 'tilesloaded', function() {
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    });
+
 	var style_dark = new google.maps.StyledMapType(darkStyle, {name: "Dark"});
 	map.mapTypes.set('dark_style', style_dark);
 
