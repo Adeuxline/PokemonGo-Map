@@ -76,21 +76,18 @@ function initMap() {
         streetViewControl: false,
 		mapTypeControl: true,
 		mapTypeControlOptions: {
-          style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
+          style: google.maps.MapTypeControlStyle.DEFAULT,
           position: google.maps.ControlPosition.RIGHT_TOP,
           mapTypeIds: [
               'style_pgo',
-              google.maps.MapTypeId.ROADMAP,
-              google.maps.MapTypeId.SATELLITE,
-              'dark_style',
-              'style_light2',]
+              google.maps.MapTypeId.ROADMAP,]
         },
     });
 
 	var style_dark = new google.maps.StyledMapType(darkStyle, {name: "Dark"});
 	map.mapTypes.set('dark_style', style_dark);
 
-	var style_light2 = new google.maps.StyledMapType(light2Style, {name: "Light2"});
+	var style_light2 = new google.maps.StyledMapType(light2Style, {name: "Light"});
 	map.mapTypes.set('style_light2', style_light2);
 
 	var style_pgo = new google.maps.StyledMapType(pGoStyle, {name: "PokemonGo"});
