@@ -10,33 +10,6 @@ var language = document.documentElement.lang == "" ? "en" : document.documentEle
 var idToPokemon = {};
 
 
-$.getJSON("static/locales/pokemon." + document.documentElement.lang + ".json").done(function(data) {
-    var pokeList = []
-
-    $.each(data, function(key, value) {
-        pokeList.push( { id: key, text: value } );
-        idToPokemon[key] = value;
-    });
-
-    // setup the filter lists
-    $selectExclude.select2({
-        placeholder: "Sélectionner Pokémon",
-        data: pokeList
-    });
-    $selectNotify.select2({
-        placeholder: "Sélectionner  Pokémon",
-        data: pokeList
-    });
-
-    // recall saved lists
-    if (localStorage['remember_select_exclude']) {
-        $selectExclude.val(JSON.parse(localStorage.remember_select_exclude)).trigger("change");
-    }
-    if (localStorage['remember_select_notify']) {
-        $selectNotify.val(JSON.parse(localStorage.remember_select_notify)).trigger("change");
-    }
-});
-
 
 var excludedPokemon = [];
 var notifiedPokemon = [];
@@ -711,6 +684,7 @@ $(function () {
     $selectNotify  = $("#notify-pokemon");
 
     // Load pokemon names and populate lists
+    var language = "fr";
     $.getJSON("static/locales/pokemon." + language + ".json").done(function(data) {
         var pokeList = []
 
