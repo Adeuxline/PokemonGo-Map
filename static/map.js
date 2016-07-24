@@ -186,7 +186,7 @@ function pokemonLabel(name, disappear_time, id, latitude, longitude) {
         </div>
         <div>
             Disparait à ${pad(disappear_date.getHours())}:${pad(disappear_date.getMinutes())}:${pad(disappear_date.getSeconds())}
-            <span class='label-countdown' disappears-at='${disappear_time}'>(00m00s)</span></div>`;
+            <span class='label-countdown' disappears-at='${disappear_time}'>(00m00s)</span></div>
         <div>
             <a href='javascript:excludePokemon(${id})'>Exclure</a>&nbsp;&nbsp;
             <a href='javascript:notifyAboutPokemon(${id})'>Notifier</a>&nbsp;&nbsp;

@@ -10,12 +10,9 @@ import os
 import json
 from datetime import datetime, timedelta
 import ConfigParser
-<<<<<<< HEAD
-=======
 import platform
 import logging
 import shutil
->>>>>>> 7465aadca5b8a5dde816cb4d573322056205158b
 
 from . import config
 
@@ -30,15 +27,14 @@ def parse_unicode(bytestring):
     decoded_string = bytestring.decode(sys.getfilesystemencoding())
     return decoded_string
 
-<<<<<<< HEAD
-=======
+
 def verify_config_file_exists(filename):
     fullpath = os.path.join(os.path.dirname(__file__), filename)
     if os.path.exists(fullpath) is False:
         log.info("Could not find " + filename + ", copying default")
         shutil.copy2(fullpath + '.example', fullpath)
 
->>>>>>> 7465aadca5b8a5dde816cb4d573322056205158b
+
 def parse_config(args):
     verify_config_file_exists('../config/config.ini')
     Config = ConfigParser.ConfigParser()
@@ -57,10 +53,7 @@ def parse_config(args):
     return args
 
 def parse_db_config(args):
-<<<<<<< HEAD
-=======
     verify_config_file_exists('../config/config.ini')
->>>>>>> 7465aadca5b8a5dde816cb4d573322056205158b
     Config = ConfigParser.ConfigParser()
     Config.read(os.path.join(os.path.dirname(__file__), '../config/config.ini'))
     args.db_type = Config.get('Database','Type')
