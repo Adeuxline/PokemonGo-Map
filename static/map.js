@@ -263,7 +263,7 @@ function setupPokemonMarker(item) {
             lng: item.longitude
         },
         map: map,
-        icon: 'static/icons/' + item.pokemon_id + '.png'
+        icon: icon
     });
 
     marker.infoWindow = new google.maps.InfoWindow({
