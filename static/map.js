@@ -84,8 +84,8 @@ function initMap() {
         },
     });
 
-    var ad = '<ins class="adsbygoogle" \
-              style="display:inline-block;width:300px;height:100px;z-index: 9999;" \
+    var ad = '<ins class="adsbygoogle adslot_1" \
+              style="display:inline-block;z-index: 9999;" \
               data-ad-client="ca-pub-2991652269444733" \
               data-ad-slot="3149333806"></ins>';
 
