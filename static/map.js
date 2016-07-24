@@ -9,8 +9,7 @@ var $selectNotify;
 var language = document.documentElement.lang == "" ? "en" : document.documentElement.lang;
 var idToPokemon = {};
 
-/*
-<!-- the JSONget was commented here
+
 $.getJSON("static/locales/pokemon." + document.documentElement.lang + ".json").done(function(data) {
     var pokeList = []
 
@@ -37,8 +36,6 @@ $.getJSON("static/locales/pokemon." + document.documentElement.lang + ".json").d
         $selectNotify.val(JSON.parse(localStorage.remember_select_notify)).trigger("change");
     }
 });
--->
-*/
 
 
 var excludedPokemon = [];
@@ -244,7 +241,7 @@ function pokestopLabel(lured, last_modified, active_pokemon_id, latitude, longit
                 </small>
             </div>
             <div>
-                Lure expires at ${pad(expire_date.getHours())}:${pad(expire_date.getMinutes())}:${pad(expire_date.getSeconds())}
+                Leurre expire à ${pad(expire_date.getHours())}:${pad(expire_date.getMinutes())}:${pad(expire_date.getSeconds())}
                 <span class='label-countdown' disappears-at='${expire_time}'>(00m00s)</span></div>
             <div>`;
     } else {
@@ -294,7 +291,9 @@ function setupPokemonMarker(item) {
         if(localStorage.playSound === 'true'){
           audio.play();
         }
-        sendNotification('A wild ' + item.pokemon_name + ' appeared!', 'Click to load map', 'static/icons/' + item.pokemon_id + '.png')
+
+        sendNotification('Un ' + item.pokemon_name + ' sauvage est apparu !', 'Cliquer pour charger la carte', 'static/icons/' + item.pokemon_id + '.png', item.latitude, item.longitude);
+        marker.setAnimation(google.maps.Animation.BOUNCE);
     }
 
     addListeners(marker);
