@@ -10,17 +10,37 @@ import os
 import json
 from datetime import datetime, timedelta
 import ConfigParser
+<<<<<<< HEAD
+=======
+import platform
+import logging
+import shutil
+>>>>>>> 7465aadca5b8a5dde816cb4d573322056205158b
 
 from . import config
 
 from exceptions import APIKeyException
 
+DEFAULT_THREADS = 1
+
+logging.basicConfig(level=logging.INFO, format='%(asctime)s [%(module)11s] [%(levelname)7s] %(message)s')
+log = logging.getLogger(__name__)
 
 def parse_unicode(bytestring):
     decoded_string = bytestring.decode(sys.getfilesystemencoding())
     return decoded_string
 
+<<<<<<< HEAD
+=======
+def verify_config_file_exists(filename):
+    fullpath = os.path.join(os.path.dirname(__file__), filename)
+    if os.path.exists(fullpath) is False:
+        log.info("Could not find " + filename + ", copying default")
+        shutil.copy2(fullpath + '.example', fullpath)
+
+>>>>>>> 7465aadca5b8a5dde816cb4d573322056205158b
 def parse_config(args):
+    verify_config_file_exists('../config/config.ini')
     Config = ConfigParser.ConfigParser()
     Config.read(os.path.join(os.path.dirname(__file__), '../config/config.ini'))
     args.auth_service = Config.get('Authentication', 'Service')
@@ -37,6 +57,10 @@ def parse_config(args):
     return args
 
 def parse_db_config(args):
+<<<<<<< HEAD
+=======
+    verify_config_file_exists('../config/config.ini')
+>>>>>>> 7465aadca5b8a5dde816cb4d573322056205158b
     Config = ConfigParser.ConfigParser()
     Config.read(os.path.join(os.path.dirname(__file__), '../config/config.ini'))
     args.db_type = Config.get('Database','Type')
@@ -69,7 +93,7 @@ def get_args():
     parser.add_argument('-k', '--google-maps-key', help='Google Maps Javascript API Key', default=None, dest='gmaps_key')
     parser.add_argument('-C', '--cors', help='Enable CORS on web server', action='store_true', default=False)
     parser.add_argument('-D', '--db', help='Database filename', default='pogom.db')
-    parser.add_argument('-t', '--threads', help='Number of search threads', required=False, type=int, default=5, dest='num_threads')
+    parser.add_argument('-t', '--threads', help='Number of search threads', required=False, type=int, default=DEFAULT_THREADS, dest='num_threads')
     parser.set_defaults(DEBUG=False)
     args = parser.parse_args()
 
@@ -148,6 +172,7 @@ def get_pokemon_name(pokemon_id):
     return get_pokemon_name.names[str(pokemon_id)]
 
 def load_credentials(filepath):
+    verify_config_file_exists('../config/credentials.json')
     try:
         with open(filepath+os.path.sep+'/config/credentials.json') as file:
             creds = json.load(file)
